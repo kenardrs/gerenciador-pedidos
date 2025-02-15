@@ -1,14 +1,16 @@
-package br.com.alura.spring.desafio.gerenciador_pedidos.model;
+package br.com.alura.spring.desafio.gerenciador_pedidos.entities;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name = "categoria")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Categoria {
     @Id
     private Long id;

@@ -1,11 +1,14 @@
-package br.com.alura.spring.desafio.gerenciador_pedidos.model;
+package br.com.alura.spring.desafio.gerenciador_pedidos.entities;
 
 import jakarta.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Table(name = "produto")
-@Data
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
 public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
