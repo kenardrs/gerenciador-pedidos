@@ -30,6 +30,29 @@ class RepositoriesTestContainersTest {
     PedidoRepository pedidoRepository;
 
     @Test
+    public void testSalvarCategoria() {
+        // Cria uma nova categoria
+        Categoria categoria = new Categoria();
+        categoria.setId(1L);
+        categoria.setNome("Eletrônico");
+
+        // Salva a categoria no banco de dados
+        Categoria categoriaSalva = categoriaRepository.save(categoria);
+
+        // Verifica se a categoria foi salva corretamente
+        assertThat(categoriaSalva).isNotNull();
+        assertThat(categoriaSalva.getId()).isNotNull();
+        assertThat(categoriaSalva.getNome()).isEqualTo("Eletrônico");
+
+        // Busca o categoria no banco de dados para confirmar que foi salvo
+        Categoria categoriaEncontrada = categoriaRepository.findById(categoriaSalva.getId()).orElse(null);
+        System.out.println(categoriaEncontrada);
+        assertThat(categoriaEncontrada).isNotNull();
+        assertThat(categoriaEncontrada.getId()).isEqualTo(1L);
+        assertThat(categoriaEncontrada.getNome()).isEqualTo("Eletrônico");
+    }
+
+    @Test
     public void testSalvarProduto() {
         // Cria um novo produto
         Produto produto = new Produto();
@@ -51,29 +74,6 @@ class RepositoriesTestContainersTest {
         assertThat(produtoEncontrado).isNotNull();
         assertThat(produtoEncontrado.getNome()).isEqualTo("Notebook");
         assertThat(produtoEncontrado.getPreco()).isEqualTo(4500.00);
-    }
-
-    @Test
-    public void testSalvarCategoria() {
-        // Cria uma nova categoria
-        Categoria categoria = new Categoria();
-        categoria.setId(1L);
-        categoria.setNome("Eletrônico");
-
-        // Salva a categoria no banco de dados
-        Categoria categoriaSalva = categoriaRepository.save(categoria);
-
-        // Verifica se a categoria foi salva corretamente
-        assertThat(categoriaSalva).isNotNull();
-        assertThat(categoriaSalva.getId()).isNotNull();
-        assertThat(categoriaSalva.getNome()).isEqualTo("Eletrônico");
-
-        // Busca o categoria no banco de dados para confirmar que foi salvo
-        Categoria categoriaEncontrada = categoriaRepository.findById(categoriaSalva.getId()).orElse(null);
-        System.out.println(categoriaEncontrada);
-        assertThat(categoriaEncontrada).isNotNull();
-        assertThat(categoriaEncontrada.getId()).isEqualTo(1L);
-        assertThat(categoriaEncontrada.getNome()).isEqualTo("Eletrônico");
     }
 
     @Test

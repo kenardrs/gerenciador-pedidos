@@ -1,13 +1,16 @@
 package br.com.alura.spring.desafio.gerenciador_pedidos.entities;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Table(name = "produto")
 @Getter
 @Setter
-@ToString
 @RequiredArgsConstructor
 public class Produto {
     @Id
@@ -19,4 +22,23 @@ public class Produto {
 
     @Column(name = "valor")
     private Double preco;
+
+    @ManyToOne
+    @JoinColumn(name = "fornecedor_id")
+    private Fornecedor fornecedor;
+
+    @ManyToMany(mappedBy = "produtos")
+    private List<Pedido> pedidos;
+
+    @OneToMany
+    private List<Fornecedor> fornecedores;
+
+    @Override
+    public String toString() {
+        return getClass().getSimpleName() + "(" +
+                "id = " + id + ", " +
+                "nome = " + nome + ", " +
+                "preco = " + preco + ", " +
+                "fornecedor = " + fornecedor + ")";
+    }
 }
