@@ -8,7 +8,6 @@ import br.com.alura.spring.desafio.gerenciador_pedidos.repositories.ProdutoRepos
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Principal {
