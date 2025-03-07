@@ -24,6 +24,10 @@ public class Produto {
     private Double preco;
 
     @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
+
+    @ManyToOne
     @JoinColumn(name = "fornecedor_id")
     private Fornecedor fornecedor;
 
@@ -39,6 +43,7 @@ public class Produto {
                 "id = " + id + ", " +
                 "nome = " + nome + ", " +
                 "preco = " + preco + ", " +
+                "categoria = " + fornecedor + ", " +
                 "fornecedor = " + fornecedor + ")";
     }
 }
